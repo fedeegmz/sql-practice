@@ -17,7 +17,7 @@ Para ejecutar el código, debes seleccionarlo todo (con **Ctrl + A** en Windows)
 Realizar el mismo proceso con **platzi-carreras.sql** 
 
 ## Retos del curso de Platzi
-1. Obtener los 5 primeros resultados de la tabla **platzi.alumnos**
+#### 1. Obtener los 5 primeros resultados de la tabla **platzi.alumnos**
 
 ```
 select *
