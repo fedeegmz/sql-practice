@@ -250,4 +250,5 @@ from generate_series(10,2,-2) with ordinality;
 
 # Más ejercicios
 
-## Nivel I
+En el directorio more-exercises se encuentran otros ejercicios para practicar el lenguaje SQL.  
+Están divididos por niveles de complejidad, empezando por el nivel 1.
