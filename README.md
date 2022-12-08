@@ -87,4 +87,49 @@ select extract(HOUR from fecha_incorporacion) as hora_incorporacion
 from platzi.alumnos;
 ```
 
-### 5. 
+### 5. Obtener los registros que tengan fecha_incorporacion = 2019 del mes 05 de la tabla **platzi.alumnos**
+
+```
+select *
+from platzi.alumnos
+where (
+		extract(YEAR from fecha_incorporacion) = 2019
+	and extract(MONTH from fecha_incorporacion) = 05
+);
+```
+
+```
+select *
+from (
+	select *,
+		date_part('YEAR', fecha_incorporacion) as año_incorporacion,
+		date_part('MONTH', fecha_incorporacion) as mes_incorporacion
+	from platzi.alumnos
+) as alumnos_with_año
+where año_incorporacion = 2019
+	and mes_incorporacion = 05;
+```
+
+### 6. Eliminar los registros duplicados
+> **AYUDA**
+```
+-- querie para obtener los registros duplicados
+select *
+from (
+	select id,
+		row_number() over(
+			partition by
+				nombre,
+				apellido,
+				email,
+				colegiatura,
+				fecha_incorporacion,
+				carrera_id,
+				tutor_id
+			order by id asc
+			) as row,
+	*
+	from platzi.alumnos
+) as duplicados
+where duplicados.row > 1;
+```
