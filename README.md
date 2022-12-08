@@ -211,9 +211,9 @@ full outer join platzi.carreras as c
 ### 11. Mostrar un triangulo de *
 > RESULTADO  
 > ```
-*
-**
-***
+> *
+> **
+> ***
 > ``` 
 
 ```
