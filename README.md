@@ -17,4 +17,22 @@ Para ejecutar el código, debes seleccionarlo todo (con **Ctrl + A** en Windows)
 Realizar el mismo proceso con **platzi-carreras.sql** 
 
 ## Retos del curso de Platzi
-1. 
+1. Obtener los 5 primeros resultados de la tabla platzi.alumnos
+'''
+select *
+from platzi.alumnos
+limit 5;
+'''
+'''
+select *
+from platzi.alumnos
+fetch first 5 rows only;
+'''
+'''
+select *
+from (
+	select row_number() over() as row_id, *
+	from platzi.alumnos
+) as alumnos_with_row_num
+where row_id <= 5;
+'''
