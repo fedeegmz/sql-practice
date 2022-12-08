@@ -111,7 +111,7 @@ where año_incorporacion = 2019
 ```
 
 ### 6. Eliminar los registros duplicados
-> **AYUDA** ``` -- querie para obtener los registros duplicados
+> **AYUDA**: querie para obtener los registros duplicados ```
 select *
 from (
 	select id,
