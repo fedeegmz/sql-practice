@@ -111,8 +111,7 @@ where año_incorporacion = 2019
 ```
 
 ### 6. Eliminar los registros duplicados
-> **AYUDA**: querie para obtener los registros duplicados
-```
+**AYUDA**: querie para obtener los registros duplicados ```
 select *
 from (
 	select id,
@@ -130,5 +129,117 @@ from (
 	*
 	from platzi.alumnos
 ) as duplicados
-where duplicados.row > 1;
+where duplicados.row > 1; ```
+
+Respuesta
+```
+delete from platzi.alumnos
+where id in (select id
+from (
+	select *
+	from (
+		select
+			row_number() over(
+				partition by
+					nombre,
+					apellido,
+					email,
+					colegiatura,
+					fecha_incorporacion,
+					carrera_id,
+					tutor_id
+				order by id asc
+				) as row, *
+		from platzi.alumnos
+		) as duplicados
+where duplicados.row > 1) as duplicados_id);
+```
+
+### 7. Obtener la intersección entre tutor_id y carrera_id de la tabla **platzi.alumnos**
+> Es decir, los alumnos que comparten tutor y carrera
+
+```
+select numrange(
+	(select min(tutor_id) from platzi.alumnos),
+	(select max(tutor_id) from platzi.alumnos)
+	)
+	*
+	numrange(
+		(select min(carrera_id) from platzi.alumnos),
+		(select max(carrera_id) from platzi.alumnos)
+	);
+```
+
+### 8. Obtener el mínimo nombre (alfabéticamente) de la tabla **platzi.alumnos**
+
+```
+select min(nombre)
+from platzi.alumnos;
+```
+
+```
+select *
+from platzi.alumnos
+order by nombre desc
+limit 1;
+```
+
+### 9. Obtener el promedio de alumnos por tutor de la tabla **platzi.alumnos**
+
+```
+select avg(alumnos_por_tutor) as promedio_alumnos_por_tutor
+from (
+	select concat(t.nombre, ' ', t.apellido) as tutor,
+				count(*) as alumnos_por_tutor
+	from platzi.alumnos as a
+	inner join platzi.alumnos as t
+		on a.tutor_id = t.id
+	group by tutor
+	order by alumnos_por_tutor desc
+	);
+```
+
+### 10. Obtener todos los registros de ambas tablas
+
+```
+select a.nombre, a.apellido, a,carrera_id, c.id, c.carrera
+from platzi.alumnos as a
+full outer join platzi.carreras as c
+	on a.carrera_id = c.id;
+```
+
+### 11. Mostrar un triangulo de *
+> RESULTADO  
+ *
+ **
+ ***  
+
+```
+select lpad('*', cast(row_id as int), '*')
+from (
+		select row_number() over(order by carrera_id) as row_id, *
+		from platzi.alumnos
+	) as alumnos_with_row_id
+where row_id <= 5
+order by carrera_id;
+```
+
+```
+select rpad('*', cast(row_id as int), '*')
+from (
+		select row_number() over(order by carrera_id) as row_id, *
+		from platzi.alumnos
+	) as alumnos_with_row_id
+where row_id <= 5
+order by carrera_id;
+```
+
+### 12. Generar el triángulo del reto anterior pero con rangos
+
+```
+select lpad('*',cast(s.a as int),'*')
+from generate_series(1,10) as s(a);
+
+select lpad('*',cast(ordinality as int),'*')
+from generate_series(10,2,-2) with ordinality;
 ```
