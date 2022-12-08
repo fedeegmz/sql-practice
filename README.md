@@ -17,7 +17,7 @@ Para ejecutar el código, debes seleccionarlo todo (con **Ctrl + A** en Windows)
 Realizar el mismo proceso con **platzi-carreras.sql** 
 
 ## Retos del curso de Platzi
-1. Obtener los 5 primeros resultados de la tabla platzi.alumnos
+1. Obtener los 5 primeros resultados de la tabla **platzi.alumnos**
 
 ```
 select *
@@ -31,6 +31,7 @@ from platzi.alumnos
 fetch first 5 rows only;
 ```
 
+Solución de Israel Vázquez Morales (Platzi team)
 ```
 select *
 from (
@@ -40,4 +41,34 @@ from (
 where row_id <= 5;
 ```
 
-2. 
+2. Obtener la segunda mitad de la tabla **platzi.alumnos**
+
+```
+select *
+from platzi.alumnos
+offset (
+	select count(*)
+	from platzi.alumnos / 2);
+```
+
+Solución de Israel Vázquez Morales (Platzi team)
+```
+select row_number() over() as row_id, *
+from platzi.alumnos
+offset (
+	select count(*) / 2
+	from platzi.alumnos
+	);
+```
+
+3. Obtener todos los registros (rows) excepto los que tengan **tutor_id = 30**
+
+```
+select *
+from platzi.alumnos
+where id not in (
+	select id
+	from platzi.alumnos
+	where tutor_id = 30
+);
+```
