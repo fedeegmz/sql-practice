@@ -111,27 +111,29 @@ where año_incorporacion = 2019
 ```
 
 ### 6. Eliminar los registros duplicados
-**AYUDA**: querie para obtener los registros duplicados ```
-select *
-from (
-	select id,
-		row_number() over(
-			partition by
-				nombre,
-				apellido,
-				email,
-				colegiatura,
-				fecha_incorporacion,
-				carrera_id,
-				tutor_id
-			order by id asc
-			) as row,
-	*
-	from platzi.alumnos
-) as duplicados
-where duplicados.row > 1; ```
+> **AYUDA**: querie para obtener los registros duplicados
+> ```
+> select *
+> from (
+> 	select id,
+>		row_number() over(
+>			partition by
+>				nombre,
+>				apellido,
+>				email,
+>				colegiatura,
+>				fecha_incorporacion,
+>				carrera_id,
+>				tutor_id
+>			order by id asc
+>			) as row,
+>	*
+>	from platzi.alumnos
+> ) as duplicados
+> where duplicados.row > 1;
+> ```
 
-Respuesta
+
 ```
 delete from platzi.alumnos
 where id in (select id
@@ -245,3 +247,7 @@ from generate_series(1,10) as s(a);
 select lpad('*',cast(ordinality as int),'*')
 from generate_series(10,2,-2) with ordinality;
 ```
+
+# Más ejercicios
+
+## Nivel I
