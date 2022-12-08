@@ -17,7 +17,7 @@ Para ejecutar el código, debes seleccionarlo todo (con **Ctrl + A** en Windows)
 Realizar el mismo proceso con **platzi-carreras.sql** 
 
 ## Retos del curso de Platzi
-#### 1. Obtener los 5 primeros resultados de la tabla **platzi.alumnos**
+### 1. Obtener los 5 primeros resultados de la tabla **platzi.alumnos**
 
 ```
 select *
@@ -41,7 +41,7 @@ from (
 where row_id <= 5;
 ```
 
-2. Obtener la segunda mitad de la tabla **platzi.alumnos**
+### 2. Obtener la segunda mitad de la tabla **platzi.alumnos**
 
 ```
 select *
@@ -61,7 +61,7 @@ offset (
 	);
 ```
 
-3. Obtener todos los registros (rows) excepto los que tengan **tutor_id = 30**
+### 3. Obtener todos los registros (rows) excepto los que tengan **tutor_id = 30** de la tabla **platzi.alumnos**
 
 ```
 select *
@@ -72,3 +72,19 @@ where id not in (
 	where tutor_id = 30
 );
 ```
+
+### 4. Extraer hora, minuto y segundo del campo **fecha_incorporacion** de la tabla **platzi.alumnos**
+
+```
+select date_part('HOUR', fecha_incorporacion) as hora_incorporacion,
+				date_part('MINUTE' fecha_incorporacion) as minuto_incorporacion,
+				date_part('SECOND' fecha_incorporacion) as segundo_incorporacion
+from platzi.alumnos;
+```
+
+```
+select extract(HOUR from fecha_incorporacion) as hora_incorporacion
+from platzi.alumnos;
+```
+
+### 5. 
