@@ -129,4 +129,5 @@ from (
 	*
 	from platzi.alumnos
 ) as duplicados
-where duplicados.row > 1; ```
+where duplicados.row > 1;
+```
