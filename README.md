@@ -2,6 +2,9 @@
 Este repositorio contiene los retos resueltos del **curso práctico de SQL** de Platzi. 
 Además, se encontrarán respuestas (en forma de querie SQL) a ciertas preguntas, con el fin de practicar los conocimientos del lenguaje. 
 Cabe mencionar que cualquier persona puede usar este repositorio para responder por su cuenta las preguntas y comparar los resultados; es importante tener en cuenta que existen más de un camino para llegar a dichas respuestas. 
+
+[Apuntes](https://lnkd.in/dD6Sn8bs) de **PostgreSQL**
+[Apuntes](https://lnkd.in/dmKVV6bv) de **SQL**
  
 ## Base de datos (DB)
 Yo voy a utilizar el motor de DB PostgreSQL, a continuación dejo las instrucciónes para crear la DB para resolver los ejercicios.  
