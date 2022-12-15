@@ -33,5 +33,9 @@ where c.id is null or a.carrera_id is null;
 ### 4. Obtener los alumnos agrupados por carrera. Mostrar solo las columnas nombre y apellido de la tabla **platzi.alumnos**, y la columna carrera de la tabla **platzi.carreras**
 
 ```sql
-
+select a.nombre, a.apellido, c.carrera
+from platzi.alumnos as a
+left join platzi.carreras as c
+	on a.carrera_id = c.id
+group by c.carrera;
 ```
