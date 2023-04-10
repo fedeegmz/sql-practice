@@ -7,8 +7,7 @@ Cabe mencionar que cualquier persona puede usar este repositorio para responder 
 Recomiendo leer el archivo [/database-instructions.md](database-instructions.md), contiene las instrucciones para crear la base de datos y poder realizar los ejercicios.  
 En el archivo [/platzi-retos.md](platzi-retos.md) se encuentran los retos y las respuestas del **Curso Práctico de SQL** de Platzi.  
 
-[Apuntes](https://lnkd.in/dD6Sn8bs) de **PostgreSQL**  
-[Apuntes](https://lnkd.in/dmKVV6bv) de **SQL**
+[**Apuntes**](https://fedeegmz.notion.site/Database-327ed110d89d493e803838510a4621d3)
 
 ## Más ejercicios
 
