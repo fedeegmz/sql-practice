@@ -30,10 +30,20 @@ full outer join platzi.carreras as c
 where c.id is null or a.carrera_id is null;
 ```
 
-### 4. Obtener los alumnos agrupados por carrera. Mostrar solo las columnas nombre y apellido de la tabla **platzi.alumnos**, y la columna carrera de la tabla **platzi.carreras**
+### 4. Obtener la cantidad alumnos agrupados por carrera. Mostrar solo las columnas Carrera y Cantidad
 
 ```sql
-select a.nombre, a.apellido, c.carrera
+select c.carrera as carrera, count(a.nombre) as cantidad
+from platzi.alumnos as a
+left join platzi.carreras as c
+	on a.carrera_id = c.id
+group by c.carrera;
+```
+
+### 5. Obtener la fecha de incorporación más reciente de un alumno por cada carrera. Solo mostrar el nombre de la carrera y la fecha de incorporación
+
+```sql
+select c.carrera, max(a.fecha_incorporacion)
 from platzi.alumnos as a
 left join platzi.carreras as c
 	on a.carrera_id = c.id
